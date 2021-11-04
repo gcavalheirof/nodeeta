@@ -1,11 +1,19 @@
 # NodeETA_Pulmao-pH
+ESP-WROOM-32
 
 ## 💻 Funcionalidades
-* Requisição valor do pH `<linguagem / dependência / requeridos>`
-* Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
-* Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
-* 
+#MODBUS
+* Requisição valor do `pH`.
+* Requisição valor do `SetPoint1`.
+* Requisição escrita do `SetPoint1 pH(digital)`.
+* Requisição escrita do `SetPoint1 analógica(bomba dosadora)`.
+
+
+## 💻 OTA
+IP: 10.116.88.31
+
 ## 💻 Esquemático
+
 
 
 
