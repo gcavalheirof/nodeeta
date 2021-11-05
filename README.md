@@ -26,7 +26,15 @@ Senha: Esp-ph@nuplam
 
 # 💻 NodeETA_Deio-bomba
 ##  Funcionalidades
+
 ## OTA
+
+IP: 10.116.88.33
+
+Usuário: ESP_deio-bomba
+
+Senha: Esp_deio-bomba@nuplam
+
 
 # 💻 NodeETA_OR-temp
 ##  Funcionalidades
