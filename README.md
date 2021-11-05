@@ -23,3 +23,11 @@ Senha: Esp-ph@nuplam
 # 💻 NodeETA_OR
 ##  Funcionalidades
 ## OTA
+
+# 💻 NodeETA_Deio-bomba
+##  Funcionalidades
+## OTA
+
+# 💻 NodeETA_OR-temp
+##  Funcionalidades
+## OTA
