@@ -30,7 +30,7 @@ Senha: Esp-ph@nuplam
 
 # 💻 NodeETA_OR-temp
 ##  Funcionalidades
-###MQTT
+### MQTT
 
 * Publicação no tópico `/eta/or_temp` o valor da `temperatura`.
 
