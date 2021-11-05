@@ -32,7 +32,7 @@ Senha: Esp-ph@nuplam
 ##  Funcionalidades
 ###MQTT
 
-* Publicação no tópico /eta/or_temp o valor da `temperatura`.
+* Publicação no tópico `/eta/or_temp` o valor da `temperatura`.
 
 ## OTA
 
