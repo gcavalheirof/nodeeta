@@ -30,4 +30,12 @@ Senha: Esp-ph@nuplam
 
 # 💻 NodeETA_OR-temp
 ##  Funcionalidades
+###MQTT
+
+* Publicação no tópico /eta/or_temp o valor da `temperatura`.
+
 ## OTA
+
+IP: 10.116.88.32
+
+
