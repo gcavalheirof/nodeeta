@@ -38,4 +38,8 @@ Senha: Esp-ph@nuplam
 
 IP: 10.116.88.32
 
+Usuário: Esp-OR-temp
+
+Senha: Esp-or-temp@nuplam
+
 
