@@ -19,10 +19,8 @@ const char* mqtt_user = "broker-eta";
 const char* mqtt_pass = "Broker-eta@nuplam";
 int timer_reset = 0;
 long lastMsg = 0;
-long lastMsg2 = 0;
-const char* falha = "FALHOU MODBUS";
+int change_poll = 0;
 const char* menosum = "-1";
-const char* certo = "OK MODBUS";
 bool mudarSP = false;
 
 union {
@@ -133,7 +131,7 @@ void consulta_ph()
    Serial2.write((byte)0x34);
    delay(30);
    digitalWrite(SSerialTxControl, RS485Receive);
-   resposta(true);
+   resposta(false);
 } 
 
 void escrita_sp1_pH()
@@ -200,7 +198,7 @@ void consulta_sp1()
    //Serial.println("Consulta SP1");
    delay(30);
    digitalWrite(SSerialTxControl, RS485Receive);
-   resposta(false);
+   resposta(true);
 } 
 
 void resposta(bool ph){
@@ -278,11 +276,16 @@ void loop()
 
   long now = millis();
   
-  if (now - lastMsg > 5000) {
-    consulta_ph();
-    //delay(100);
-    //consulta_sp1();
+  if (now - lastMsg > 2500) {
+    
+    if(change_poll == 0)
+      consulta_ph();
+    else if(change_poll == 1)
+      consulta_sp1();
+
     lastMsg = now;
+    change_poll++;
+    if(change_poll > 1) change_poll = 0;
   }
   
   client.subscribe("/eta/envia_sp");
