@@ -1,7 +1,7 @@
-# NodeETA_Pulmao-pH
+# 💻 NodeETA_Pulmao-pH
 ESP-WROOM-32
 
-## 💻 Funcionalidades
+##  Funcionalidades
 ### MODBUS
 * Requisição valor do `pH`.
 * Requisição valor do `SetPoint1`.
@@ -9,7 +9,7 @@ ESP-WROOM-32
 * Requisição escrita do `SetPoint1 analógica`.
 
 
-## 💻 OTA
+## OTA
 
 IP: 10.116.88.31
 
@@ -17,9 +17,9 @@ Usuário: Esp-PH
 
 Senha: Esp-ph@nuplam
 
-
-## 💻 Esquemático
-
+## Esquemático
 
 
-
+# 💻 NodeETA_OR
+##  Funcionalidades
+## OTA
