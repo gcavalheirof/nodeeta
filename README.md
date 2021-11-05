@@ -26,6 +26,8 @@ Senha: Esp-ph@nuplam
 
 # 💻 NodeETA_Deio-bomba
 ##  Funcionalidades
+### MQTT
+* Publicação no tópico `/eta/deio_bomba` o valor da `corrente` na bomba.
 
 ## OTA
 
