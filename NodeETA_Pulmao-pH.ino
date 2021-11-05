@@ -9,7 +9,6 @@
 #define RS485Transmit    HIGH
 #define RS485Receive     LOW
 WebServer server(80);
-//FastCRC16 CRC16;
 
 const char* ssid = "iot";
 const char* password = "jt72M8vP";
