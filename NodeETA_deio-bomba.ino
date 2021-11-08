@@ -4,6 +4,7 @@
 #include <WebServer.h>
 #include <ElegantOTA.h>
 #include <EmonLib.h>  // biblioteca do sensor de corrente
+#define PIN_SENSOR 15
 
 WebServer server(80);
 
@@ -70,12 +71,12 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     
-    String clientId = "ESP8266Client-";
+    String clientId = "ESP32Client-";
     clientId += String(random(0xffff), HEX);
     
     if (client.connect(clientId.c_str(), mqtt_user, mqtt_pass)) {
       Serial.println("connected");
-      client.subscribe("/eta/deio_bomba");
+      //client.subscribe("/eta/deio_bomba");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -106,7 +107,7 @@ void setup() {
   Serial.println("HTTP server started");
 
   //SENSOR DE CORRENTE
-  emon.current(15, 29);   //D4 -> entrada analogica  42-> calibracao
+  emon.current(PIN_SENSOR, 12);   //D15 -> entrada analogica  42-> calibracao
 }
 
 void loop() {
@@ -117,10 +118,11 @@ void loop() {
   
   long now = millis();
   if (now - lastMsg > 5000) {
-   
   double irms = emon.calcIrms(1480);     // funcao que le a corrente
+  //Serial.println(irms);
   String corrente = String(irms);
-    client.publish("/eta/deio_bomba", corrente.c_str());   //quebra string em caractere
-    lastMsg = now;
+  client.publish("/eta/deio_bomba", corrente.c_str());   //quebra string em caractere
+  lastMsg = now;
   }
+  delay(50);
 }
