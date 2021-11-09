@@ -1,13 +1,11 @@
-#include <DS18B20.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <WebServer.h>
 #include <ElegantOTA.h>
-#define pin_led_v 33  //LED WIFI
-#define pin_led_a 26  //LED MQTT
+#include <EmonLib.h>  // biblioteca do sensor de corrente
+#define PIN_SENSOR 15
 
-DS18B20 ds(19);
 WebServer server(80);
 
 const char* ssid = "iot";
@@ -17,9 +15,9 @@ const char* mqtt_user = "broker-eta";
 const char* mqtt_pass = "Broker-eta@nuplam";
 long lastMsg = 0;
 int timer_reset = 0;
-bool muda_led = false;
+EnergyMonitor emon;  // cria o objeto p/ interagir com o sensor
 
-IPAddress local_IP(10, 116, 88, 32); //COLOQUE UMA FAIXA DE IP DISPONÍVEL DO SEU ROTEADOR. EX: 192.168.1.110 **** ISSO VARIA, NO MEU CASO É: 192.168.0.175
+IPAddress local_IP(10, 116, 88, 33); //COLOQUE UMA FAIXA DE IP DISPONÍVEL DO SEU ROTEADOR. EX: 192.168.1.110 **** ISSO VARIA, NO MEU CASO É: 192.168.0.175
 IPAddress gateway(10, 116, 88, 1); //GATEWAY DE CONEXÃO (ALTERE PARA O GATEWAY DO SEU ROTEADOR)
 IPAddress subnet(255, 255, 255, 0); //MASCARA DE REDE
 
@@ -42,14 +40,7 @@ void setup_wifi() {
   //WiFi.config(local_IP, gateway, subnet);
 
   while (WiFi.status() != WL_CONNECTED) {
-    delay(400);
-    
-    if(muda_led)
-    digitalWrite(pin_led_v, HIGH);
-    else
-    digitalWrite(pin_led_v, LOW);
-
-    muda_led = !muda_led;
+    delay(500);
     Serial.print(".");
   }
   
@@ -63,7 +54,6 @@ void setup_wifi() {
   Serial.println();
   Serial.print("MAC: ");
   Serial.println(WiFi.macAddress());
-  digitalWrite(pin_led_v, HIGH);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -79,43 +69,28 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-
-    if(muda_led)
-    digitalWrite(pin_led_a, HIGH);
-    else
-    digitalWrite(pin_led_a, LOW);
-
-    muda_led = !muda_led;
-    
     Serial.print("Attempting MQTT connection...");
-    String clientId = "ESP8266Client-";
+    
+    String clientId = "ESP32Client-";
     clientId += String(random(0xffff), HEX);
     
     if (client.connect(clientId.c_str(), mqtt_user, mqtt_pass)) {
       Serial.println("connected");
-      client.subscribe("/eta/or_temp");
-      digitalWrite(pin_led_a, HIGH);
+      //client.subscribe("/eta/deio_bomba");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
       // Wait 5 seconds before retrying
-      delay(400);
+      delay(5000);
       timer_reset++;
-      if(timer_reset == 100) ESP.restart();
+      if(timer_reset == 20) ESP.restart();
     }
   }
 }
 
 void setup() {
   Serial.begin(9600);
-  pinMode(33, OUTPUT);
-  pinMode(26, OUTPUT);
-  digitalWrite(pin_led_a, HIGH);
-  digitalWrite(pin_led_v, HIGH);
-  delay(1000);
-  digitalWrite(pin_led_a, LOW);
-  digitalWrite(pin_led_v, LOW);
   WiFi.mode(WIFI_STA);
   setup_wifi();
   
@@ -125,11 +100,14 @@ void setup() {
 
   //OTA
   server.on("/", []() {
-  server.send(200, "text/plain", "Hi! I am ESP_OR-temp.");
+  server.send(200, "text/plain", "Hi! I am ESP_deio-bomba.");
   });
-  ElegantOTA.begin(&server, "Esp-OR-temp", "Esp-or-temp@nuplam");    // Start ElegantOTA
+  ElegantOTA.begin(&server, "ESP_deio-bomba", "Esp_deio-bomba@nuplam");    // Start ElegantOTA
   server.begin();
   Serial.println("HTTP server started");
+
+  //SENSOR DE CORRENTE
+  emon.current(PIN_SENSOR, 12);   //D15 -> entrada analogica  42-> calibracao
 }
 
 void loop() {
@@ -139,12 +117,12 @@ void loop() {
   client.loop();
   
   long now = millis();
-  if (now - lastMsg > 10000) {
-    Serial.println(ds.getTempC());
-    String temp = String(ds.getTempC());
-    client.publish("/eta/or_temp", temp.c_str());
-    lastMsg = now;
+  if (now - lastMsg > 5000) {
+  double irms = emon.calcIrms(1480);     // funcao que le a corrente
+  //Serial.println(irms);
+  String corrente = String(irms);
+  client.publish("/eta/deio_bomba", corrente.c_str());   //quebra string em caractere
+  lastMsg = now;
   }
-   server.handleClient();
-   delay(50);
+  delay(50);
 }
