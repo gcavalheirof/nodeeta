@@ -4,6 +4,8 @@
 #include <WiFiClient.h>
 #include <WebServer.h>
 #include <ElegantOTA.h>
+#define pin_led_v 33  //LED WIFI
+#define pin_led_a 26  //LED MQTT
 
 DS18B20 ds(19);
 WebServer server(80);
@@ -15,6 +17,8 @@ const char* mqtt_user = "broker-eta";
 const char* mqtt_pass = "Broker-eta@nuplam";
 long lastMsg = 0;
 int timer_reset = 0;
+bool muda_led = false;
+
 IPAddress local_IP(10, 116, 88, 32); //COLOQUE UMA FAIXA DE IP DISPONÍVEL DO SEU ROTEADOR. EX: 192.168.1.110 **** ISSO VARIA, NO MEU CASO É: 192.168.0.175
 IPAddress gateway(10, 116, 88, 1); //GATEWAY DE CONEXÃO (ALTERE PARA O GATEWAY DO SEU ROTEADOR)
 IPAddress subnet(255, 255, 255, 0); //MASCARA DE REDE
@@ -38,7 +42,14 @@ void setup_wifi() {
   //WiFi.config(local_IP, gateway, subnet);
 
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
+    delay(400);
+    
+    if(muda_led)
+    digitalWrite(pin_led_v, HIGH);
+    else
+    digitalWrite(pin_led_v, LOW);
+
+    muda_led = !muda_led;
     Serial.print(".");
   }
   
@@ -52,6 +63,7 @@ void setup_wifi() {
   Serial.println();
   Serial.print("MAC: ");
   Serial.println(WiFi.macAddress());
+  digitalWrite(pin_led_v, HIGH);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -67,33 +79,43 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
+
+    if(muda_led)
+    digitalWrite(pin_led_a, HIGH);
+    else
+    digitalWrite(pin_led_a, LOW);
+
+    muda_led = !muda_led;
     
+    Serial.print("Attempting MQTT connection...");
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     
     if (client.connect(clientId.c_str(), mqtt_user, mqtt_pass)) {
       Serial.println("connected");
       client.subscribe("/eta/or_temp");
+      digitalWrite(pin_led_a, HIGH);
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
       // Wait 5 seconds before retrying
-      delay(5000);
+      delay(400);
       timer_reset++;
-      if(timer_reset == 20) ESP.restart();
+      if(timer_reset == 100) ESP.restart();
     }
   }
 }
 
 void setup() {
   Serial.begin(9600);
-
   pinMode(33, OUTPUT);
   pinMode(26, OUTPUT);
-  digitalWrite(26, HIGH);
-  digitalWrite(33, OUTPUT);
+  digitalWrite(pin_led_a, HIGH);
+  digitalWrite(pin_led_v, HIGH);
+  delay(1000);
+  digitalWrite(pin_led_a, LOW);
+  digitalWrite(pin_led_v, LOW);
   WiFi.mode(WIFI_STA);
   setup_wifi();
   
@@ -117,7 +139,7 @@ void loop() {
   client.loop();
   
   long now = millis();
-  if (now - lastMsg > 5000) {
+  if (now - lastMsg > 10000) {
     Serial.println(ds.getTempC());
     String temp = String(ds.getTempC());
     client.publish("/eta/or_temp", temp.c_str());
