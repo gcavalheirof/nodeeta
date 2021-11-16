@@ -3,10 +3,10 @@ ESP-WROOM-32
 
 ##  Funcionalidades
 ### MODBUS 🔌
-* Requisição valor do `pH` | tópico MQTT: `/eta/ph`.
-* Requisição valor do `SetPoint1` | tópico MQTT: `/eta/th_sp1`.
-* Requisição escrita do `SetPoint1 pH` | tópico MQTT: `envia_sp`.
-* Requisição escrita do `SetPoint1 analógica` | tópico MQTT: `envia_sp`.
+* Requisição valor do `pH`                     | tópico MQTT: `/eta/ph`.
+* Requisição valor do `SetPoint1`              | tópico MQTT: `/eta/th_sp1`.
+* Requisição escrita do `SetPoint1 pH`         | tópico MQTT: `/eta/envia_sp`.
+* Requisição escrita do `SetPoint1 analógica`  | tópico MQTT: `/eta/envia_sp`.
 
 
 ## OTA
@@ -21,7 +21,7 @@ Senha: Esp-ph@nuplam
 # 💻 NodeETA_OR
 ##  Funcionalidades
 
-* Publica valor da `corrente` da bomba alta | tópico MQTT: `/eta/bomba_alta`.
+* Publica valor da `corrente` da bomba alta     | tópico MQTT: `/eta/bomba_alta`.
 * Publica valor dos `estados` da Osmose Reversa | tópico MQTT: `/eta/estado`.
 
 ## OTA
@@ -34,7 +34,7 @@ Senha: Esp-or@nuplam
 
 # 💻 NodeETA_Deio-bomba
 ##  Funcionalidades
-* Publica valor da `corrente` da bomba | tópico MQTT: `/eta/deio_bomba`.
+* Publica valor da `corrente` da bomba          | tópico MQTT: `/eta/deio_bomba`.
 
 ## OTA
 
@@ -45,7 +45,7 @@ Senha: Esp_deio-bomba@nuplam
 # 💻 NodeETA_OR-temp
 ##  Funcionalidades
 
-* Publica valor da `temperatura` | tópico MQTT: `/eta/or_temp`.
+* Publica valor da `temperatura`              | tópico MQTT: `/eta/or_temp`.
 
 ## OTA
 
