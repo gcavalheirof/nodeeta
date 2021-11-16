@@ -3,10 +3,10 @@ ESP-WROOM-32
 
 ##  Funcionalidades
 ### MODBUS
-* Requisição valor do `pH`.
-* Requisição valor do `SetPoint1`.
-* Requisição escrita do `SetPoint1 pH`.
-* Requisição escrita do `SetPoint1 analógica`.
+* Requisição valor do `pH` | tópico MQTT: `/eta/ph`.
+* Requisição valor do `SetPoint1` | tópico MQTT: `/eta/th_sp1`.
+* Requisição escrita do `SetPoint1 pH` | tópico MQTT: `envia_sp`.
+* Requisição escrita do `SetPoint1 analógica` | tópico MQTT: `envia_sp`.
 
 
 ## OTA
@@ -23,18 +23,17 @@ Senha: Esp-ph@nuplam
 # 💻 NodeETA_OR
 ##  Funcionalidades
 ## OTA
+## Esquemático
 
 # 💻 NodeETA_Deio-bomba
 ##  Funcionalidades
 ### MQTT
-* Publicação no tópico `/eta/deio_bomba` o valor da `corrente` na bomba.
+* Publica valor da `corrente` da bomba | tópico MQTT: `/eta/deio_bomba`.
 
 ## OTA
 
 IP: 10.116.88.33
-
 Usuário: ESP_deio-bomba
-
 Senha: Esp_deio-bomba@nuplam
 
 
@@ -42,7 +41,7 @@ Senha: Esp_deio-bomba@nuplam
 ##  Funcionalidades
 ### MQTT
 
-* Publicação no tópico `/eta/or_temp` o valor da `temperatura`.
+* Publica valor da `temperatura` | tópico MQTT: `/eta/or_temp`.
 
 ## OTA
 
