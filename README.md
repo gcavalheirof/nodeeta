@@ -43,7 +43,7 @@ Usuário: ESP_deio-bomba
 Senha: Esp_deio-bomba@nuplam  
 
 ## Esquemático
-![alt text](https://github.com/gcavalheirof/nodeeta/imagens/blob/schem_bomba_deio.jpg?raw=true)
+![esquematico](https://github.com/gcavalheirof/nodeeta/imagens/blob/schem_bomba_deio.png?raw=true)
 
 # 💻 NodeETA_OR-temp
 ##  Funcionalidades
