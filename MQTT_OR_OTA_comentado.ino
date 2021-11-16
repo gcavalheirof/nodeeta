@@ -92,7 +92,7 @@ void reconnect() {
 void setup() {
   Serial.begin(115200); // Inicia porta serial com taxa 115200
   setup_wifi(); // Configuração de rede
-  client.setServer(mqtt_server, 1883);  // Define o broker MQTT
+  client.setServer(mqtt_server, 1890);  // Define o broker MQTT
   client.setCallback(callback); // Define função callback
   emon.current(PIN_SENSOR, 42); // Definição do pino de leitura 
 
@@ -100,7 +100,7 @@ void setup() {
   server.on("/", []() {
     server.send(200, "text/plain", "ESP8266 da Osmose Reversa.");
   });
-  ElegantOTA.begin(&server, "admin", "espeta");    
+  ElegantOTA.begin(&server, "Esp-OR", "Esp-or@nuplam");    
   server.begin();
   Serial.println("Server HTTP iniciado");
 
