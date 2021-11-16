@@ -42,6 +42,9 @@ IP: 10.116.88.33
 Usuário: ESP_deio-bomba  
 Senha: Esp_deio-bomba@nuplam  
 
+## Esquemático
+![alt text](https://github.com/gcavalheirof/nodeeta/imagens/blob/schem_bomba_deio.jpg?raw=true)
+
 # 💻 NodeETA_OR-temp
 ##  Funcionalidades
 
