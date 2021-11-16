@@ -43,7 +43,7 @@ Usuário: ESP_deio-bomba
 Senha: Esp_deio-bomba@nuplam  
 
 ## Esquemático
-![esquematico](https://github.com/gcavalheirof/nodeeta/blob/master/imagens/schem_bomba_deio.png?raw=true)
+<img width=“964” alt=“java 8 and prio java 8  array review example” src=“https://github.com/gcavalheirof/nodeeta/blob/master/imagens/schem_bomba_deio.png”>
 
 # 💻 NodeETA_OR-temp
 ##  Funcionalidades
