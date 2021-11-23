@@ -56,4 +56,4 @@ Usuário: Esp-OR-temp
 Senha: Esp-or-temp@nuplam  
 
 ## Esquemático
-![schem](schem_bomba_deio.jpg)
+![schem](/imagens/schem_bomba_deio.jpg)
