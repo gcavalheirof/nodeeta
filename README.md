@@ -56,3 +56,4 @@ Usuário: Esp-OR-temp
 Senha: Esp-or-temp@nuplam  
 
 ## Esquemático
+![alt text](https://github.com/gcavalheirof/nodeeta/blob/imagens/schem_bomba_deio.png?raw=true)
