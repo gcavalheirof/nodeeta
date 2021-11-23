@@ -4,7 +4,7 @@
 #include <WebServer.h>
 #include <ElegantOTA.h>
 #include <EmonLib.h>  // biblioteca do sensor de corrente
-#define PIN_SENSOR 15
+#define PIN_SENSOR 34
 
 WebServer server(80);
 
@@ -107,7 +107,7 @@ void setup() {
   Serial.println("HTTP server started");
 
   //SENSOR DE CORRENTE
-  emon.current(PIN_SENSOR, 12);   //D15 -> entrada analogica  42-> calibracao
+  emon.current(PIN_SENSOR, 12);   //D34 -> entrada analogica  12-> calibracao
 }
 
 void loop() {
