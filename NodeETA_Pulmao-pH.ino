@@ -1,3 +1,8 @@
+//MODBUS:   A - BRANCO
+//          B - VERDE
+
+
+
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <WiFiClient.h>
