@@ -5,7 +5,7 @@
 #include <ElegantOTA.h>
 #include <stdlib.h>
 #include <FastCRC.h>
-#define SSerialTxControl   13   //RS485 Direction control
+#define SSerialTxControl   33   //RS485 Direction control
 #define RS485Transmit    HIGH
 #define RS485Receive     LOW
 WebServer server(80);
@@ -287,12 +287,12 @@ void loop()
     if(change_poll > 1) change_poll = 0;
   }
   
-  client.subscribe("/eta/envia_sp");
+  /*client.subscribe("/eta/envia_sp");
   if(mudarSP){
     escrita_sp1_pH();
     escrita_sp1_mA();
     mudarSP = false;
-  }
+  }*/
     
   if (timer_reset == 20){
     ESP.restart();
