@@ -5,8 +5,8 @@ ESP-WROOM-32
 ### MODBUS 🔌
 * Requisição valor do `pH`                     | tópico MQTT: `/eta/ph`.
 * Requisição valor do `SetPoint1`              | tópico MQTT: `/eta/th_sp1`.
-* Requisição escrita do `SetPoint1 pH`         | tópico MQTT: `/eta/envia_sp`.
-* Requisição escrita do `SetPoint1 analógica`  | tópico MQTT: `/eta/envia_sp`.
+* Requisição escrita do `SetPoint1`         | tópico MQTT: `/eta/envia_sp`.      (Motor agitador)
+* Requisição escrita do `Saída analógica`  | tópico MQTT: `/eta/envia_sp`.       (Bomba de hidróxido)
 
 
 ## OTA
