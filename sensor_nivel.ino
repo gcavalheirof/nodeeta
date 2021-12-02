@@ -1,4 +1,4 @@
-//Por enquanto em teste com o arduino. Futuramente implementar junto com o NoteETA_pH
+//Por enquanto em teste com o arduino. Futuramente implementar junto com o NodeETA_Pulmao-pH
 
 
 #include <Ultrasonic.h>
