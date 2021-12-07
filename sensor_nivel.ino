@@ -1,6 +1,3 @@
-//Por enquanto em teste com o arduino. Futuramente implementar junto com o NodeETA_Pulmao-pH
-
-
 #include <Ultrasonic.h>
 #define pino_trigger 12
 #define pino_echo 11
