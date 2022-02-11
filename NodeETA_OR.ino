@@ -160,8 +160,10 @@ void loop() {
     Serial.println(estado);
 
     // Publicacao das variaveis no broker
-    client.publish("/eta/or/bomba_alta", corrente);
-    client.publish("/eta/or/estado", estado);
+	String sinal = String(WiFi.RSSI());
+	  String mensagem = "{\"estado\": " + String(estado) + ", \"corrente_alta\":" + String(irms) + "}";
+    client.publish("/eta/or", mensagem);
+    client.publish("/eta/sinal_or", sinal.c_str());
     
 	// Atualizacao webserver
 	server.handleClient();
