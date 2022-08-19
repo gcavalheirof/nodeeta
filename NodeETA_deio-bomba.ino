@@ -8,18 +8,18 @@
 
 WebServer server(80);
 
-const char* ssid = "iot";
-const char* password = "jt72M8vP";
-const char* mqtt_server = "10.116.88.10";
-const char* mqtt_user = "broker-eta";
-const char* mqtt_pass = "Broker-eta@nuplam";
+const char* ssid = "xxxxxxxxxxxxxx";
+const char* password = "jxxxxxxxxxxxxxx";
+const char* mqtt_server = "xxxxxxxxxxxxxx";
+const char* mqtt_user = "xxxxxxxxxxxxxx";
+const char* mqtt_pass = "xxxxxxxxxxxxxx";
 long lastMsg = 0;
 int timer_reset = 0;
 EnergyMonitor emon;  // cria o objeto p/ interagir com o sensor
 
-IPAddress local_IP(10, 116, 88, 33); //COLOQUE UMA FAIXA DE IP DISPONÍVEL DO SEU ROTEADOR. EX: 192.168.1.110 **** ISSO VARIA, NO MEU CASO É: 192.168.0.175
-IPAddress gateway(10, 116, 88, 1); //GATEWAY DE CONEXÃO (ALTERE PARA O GATEWAY DO SEU ROTEADOR)
-IPAddress subnet(255, 255, 255, 0); //MASCARA DE REDE
+IPAddress local_IP(xxxxxxxxxxxxxx);
+IPAddress gateway(xxxxxxxxxxxxxx);
+IPAddress subnet(xxxxxxxxxxxxxx);
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -102,7 +102,7 @@ void setup() {
   server.on("/", []() {
   server.send(200, "text/plain", "Hi! I am ESP_deio-bomba.");
   });
-  ElegantOTA.begin(&server, "ESP_deio-bomba", "Esp_deio-bomba@nuplam");    // Start ElegantOTA
+  ElegantOTA.begin(&server, "xxxxxxxxxxx", "xxxxxxxxxxxx");    // Start ElegantOTA
   server.begin();
   Serial.println("HTTP server started");
 
