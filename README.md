@@ -11,9 +11,9 @@ ESP-WROOM-32
 
 ## OTA
 
-IP: 10.116.88.31  
-Usuário: Esp-PH  
-Senha: Esp-ph@nuplam  
+IP: ********* 
+Usuário: *********
+Senha: ********* 
 
 ## Esquemático
 
@@ -26,9 +26,9 @@ Senha: Esp-ph@nuplam
 
 ## OTA
 
-IP: 10.116.88.30  
-Usuário: Esp-OR  
-Senha: Esp-or@nuplam  
+IP: *********
+Usuário: ********* 
+Senha: ********* 
 
 ## Esquemático
 
@@ -38,9 +38,9 @@ Senha: Esp-or@nuplam
 
 ## OTA
 
-IP: 10.116.88.33  
-Usuário: ESP_deio-bomba  
-Senha: Esp_deio-bomba@nuplam  
+IP: ********* 
+Usuário: *********  
+Senha: ********* 
 
 ## Esquemático
 ![schem](/imagens/schem_bomba_deio.png)
@@ -52,9 +52,9 @@ Senha: Esp_deio-bomba@nuplam
 
 ## OTA
 
-IP: 10.116.88.32  
-Usuário: Esp-OR-temp  
-Senha: Esp-or-temp@nuplam  
+IP: *********
+Usuário: *********
+Senha: ********* 
 
 ## Esquemático
 ![schem](/imagens/schem_temp.png)
