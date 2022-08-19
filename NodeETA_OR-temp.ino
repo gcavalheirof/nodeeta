@@ -10,19 +10,19 @@
 DS18B20 ds(19);
 WebServer server(80);
 
-const char* ssid = "iot";
-const char* password = "jt72M8vP";
-const char* mqtt_server = "10.116.88.10";
-const char* mqtt_user = "broker-eta";
-const char* mqtt_pass = "Broker-eta@nuplam";
+const char* ssid = "xxxxxxxxxxxxxxxxx";
+const char* password = "xxxxxxxxxxxxxxxxx";
+const char* mqtt_server = "xxxxxxxxxxxxxxxxx";
+const char* mqtt_user = "xxxxxxxxxxxxxxxxx";
+const char* mqtt_pass = "xxxxxxxxxxxxxxxxx";
 hw_timer_t *timer = NULL;
 long lastMsg = 0;
 bool muda_led = false;
 char temp[50];
 
-IPAddress local_IP(10, 116, 88, 32); //COLOQUE UMA FAIXA DE IP DISPONÍVEL DO SEU ROTEADOR. EX: 192.168.1.110 **** ISSO VARIA, NO MEU CASO É: 192.168.0.175
-IPAddress gateway(10, 116, 88, 1); //GATEWAY DE CONEXÃO (ALTERE PARA O GATEWAY DO SEU ROTEADOR)
-IPAddress subnet(255, 255, 255, 0); //MASCARA DE REDE
+IPAddress local_IP(xxxxxxxxxxxxxxxxx);
+IPAddress gateway(xxxxxxxxxxxxxxxxx);
+IPAddress subnet(xxxxxxxxxxxxxxxxx);
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -139,7 +139,7 @@ void setup() {
   server.on("/", []() {
   server.send(200, "text/plain", "Hi! I am ESP_OR-temp.");
   });
-  ElegantOTA.begin(&server, "Esp-OR-temp", "Esp-or-temp@nuplam");    // Start ElegantOTA
+  ElegantOTA.begin(&server, "xxxxx", "xxxxx");    // Start ElegantOTA
   server.begin();
   Serial.println("HTTP server started");
 
