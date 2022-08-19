@@ -9,7 +9,7 @@
 WebServer server(80);
 
 const char* ssid = "xxxxxxxxxxxxxx";
-const char* password = "jxxxxxxxxxxxxxx";
+const char* password = "xxxxxxxxxxxxxx";
 const char* mqtt_server = "xxxxxxxxxxxxxx";
 const char* mqtt_user = "xxxxxxxxxxxxxx";
 const char* mqtt_pass = "xxxxxxxxxxxxxx";
