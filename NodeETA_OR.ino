@@ -14,14 +14,14 @@ const char* estado = "";
 EnergyMonitor emon;	// Objeto da lib EmonLib
 ESP8266WebServer server(80);    // Objeto da lib ESP8266WebServer
 
-const char* ssid = "iot";   // Identificador da rede
+const char* ssid = "xxxxxxxxxxxxxx";   // Identificador da rede
 const char* password = "******";    // Senha da rede
 
-const char* mqtt_server = "10.116.88.10";	// IP do broker
+const char* mqtt_server = "xxxxxxxxxxxxxx";	// IP do broker
 
-IPAddress local_IP(10, 116, 88, 30);// IP fixo para o ESP
-IPAddress gateway(10, 116, 88, 1);  // Gateway de conexão
-IPAddress subnet(255, 255, 255, 0); // Máscara de rede
+IPAddress local_IP(xxxxxxxxxxxxxx);// IP fixo para o ESP
+IPAddress gateway(xxxxxxxxxxxxxx);  // Gateway de conexão
+IPAddress subnet(xxxxxxxxxxxxxx); // Máscara de rede
 
 WiFiClient espClient;   // Objeto da lib WifiCliente
 PubSubClient client(espClient); // Objeto da lib PubSubClient
@@ -100,7 +100,7 @@ void setup() {
   server.on("/", []() {
     server.send(200, "text/plain", "ESP8266 da Osmose Reversa.");
   });
-  ElegantOTA.begin(&server, "Esp-OR", "Esp-or@nuplam");    
+  ElegantOTA.begin(&server, "xxxxxxxxxxxxxx", "xxxxxxxxxxxxxx");    
   server.begin();
   Serial.println("Server HTTP iniciado");
 
