@@ -11,9 +11,9 @@ ESP-WROOM-32
 
 ## OTA
 
-IP: ********* 
-Usuário: *********
-Senha: ********* 
+IP: *********  
+Usuário: *********  
+Senha: *********   
 
 ## Esquemático
 
@@ -26,9 +26,9 @@ Senha: *********
 
 ## OTA
 
-IP: *********
-Usuário: ********* 
-Senha: ********* 
+IP: *********  
+Usuário: *********  
+Senha: *********  
 
 ## Esquemático
 
@@ -38,9 +38,9 @@ Senha: *********
 
 ## OTA
 
-IP: ********* 
-Usuário: *********  
-Senha: ********* 
+IP: *********  
+Usuário: *********    
+Senha: *********   
 
 ## Esquemático
 ![schem](/imagens/schem_bomba_deio.png)
